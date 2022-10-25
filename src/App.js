@@ -1,23 +1,20 @@
 import './App.css';
-// import "./Componets/CardComponent/CardBlock.css";
+import React, { useEffect, useState } from 'react';
 import Header from './Componets/Header/Header';
 import CardBlock from "./Componets/CardComponent/CardBlock"
 import Filter from './Componets/Filter/Filter';
 
+
+
+
 function App() {
+ 
   return (
     <div className="App">
         <Header></Header>
-        
         <Filter></Filter>
-        
-      <div className='_container'>
-         
-        <CardBlock></CardBlock>
-     
+        <CardBlock></CardBlock> 
       </div>
-      
-    </div>
   );
 }
 

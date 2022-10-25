@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 // import FormControlLabel from '@mui/material/FormControlLabel';
 
 // function  Filter () {
@@ -17,14 +17,21 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import Checkbox from '@mui/material/Checkbox';
+import CardItem from "../CardComponent/CardItem";
 
- function BadgeVisibility() {
+ function Filter() {
   
-  const [invisible, setInvisible] = React.useState(false);
+  const [invisible, setInvisible] = useState(false);
 
   const handleBadgeVisibility = () => {
     setInvisible(!invisible);
-  };
+    };
+    
+    
+    if(!invisible) {
+        
+    }
+
 
   return (
     <Box
@@ -41,16 +48,13 @@ import Checkbox from '@mui/material/Checkbox';
       }}
     >
       <div>
-        
-        
-       
-        <FormControlLabel
+        <FormControlLabel 
           sx={{ color: 'text.primary' }}
           control={<Switch checked={invisible} onChange={handleBadgeVisibility} />}
-          label="Show favorites"
+          label="Show favorites "
         />
       </div>
     </Box>
   );
 }
-export default BadgeVisibility;
+export default Filter;
