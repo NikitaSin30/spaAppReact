@@ -9,24 +9,25 @@ import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
+import { connect } from "react-redux"
 
 
-
- export default function CardItem({name,image,deleteCard,id,heroes}) {
+ function CardItem({name,image,deleteCard,id,store,}) {
  
     // состояние сердечка 
    const [checked,setChecked] = useState(false);  
  
 
 //    счетчик лайка решил реализовать таким образом , мне он показался самым локаничным 
-   let likesCounter = 0
+
+
+ let likesCounter = 0
     if(checked){
         likesCounter += 1
+        console.log(likesCounter)
     } 
-    
-    
-      
-      
+ 
+ 
   return (
     
     <Card  id ="id" sx={{ maxWidth: 345 }}>
@@ -58,3 +59,5 @@ import Favorite from '@mui/icons-material/Favorite';
     
   );
 }
+
+export default CardItem;

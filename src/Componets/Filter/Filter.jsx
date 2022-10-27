@@ -1,23 +1,8 @@
 import React,{useState} from "react";
-// import FormControlLabel from '@mui/material/FormControlLabel';
-
-// function  Filter () {
-//     return(
-//         <div className="filter_container _container">
-          
-//         </div>
-//     )
-// }
-
-// export default Filter;
-
 import Box from '@mui/material/Box';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-import Favorite from '@mui/icons-material/Favorite';
-import Checkbox from '@mui/material/Checkbox';
-import CardItem from "../CardComponent/CardItem";
+
 
  function Filter() {
   
