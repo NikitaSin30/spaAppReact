@@ -10,12 +10,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
   const handleBadgeVisibility = () => {
     setInvisible(!invisible);
+
     };
     
     
-    if(!invisible) {
-        
-    }
 
 
   return (
@@ -36,7 +34,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
         <FormControlLabel 
           sx={{ color: 'text.primary' }}
           control={<Switch checked={invisible} onChange={handleBadgeVisibility} />}
-          label="Show favorites "
+          label="Show favorites"
         />
       </div>
     </Box>

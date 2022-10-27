@@ -9,22 +9,18 @@ import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
-import { connect } from "react-redux"
 
 
- function CardItem({name,image,deleteCard,id,store,}) {
+
+ function CardItem({name,image,deleteCard,id,}) {
  
-    // состояние сердечка 
-   const [checked,setChecked] = useState(false);  
+  
+const [checkedLike,setCheckedLike] = useState(false);  
  
-
-//    счетчик лайка решил реализовать таким образом , мне он показался самым локаничным 
-
 
  let likesCounter = 0
-    if(checked){
+    if(checkedLike){
         likesCounter += 1
-        console.log(likesCounter)
     } 
  
  
@@ -47,11 +43,11 @@ import { connect } from "react-redux"
       className='like'
        icon={<FavoriteBorder />}
         checkedIcon={<Favorite/>} 
-        checked={checked}
-         onClick={() => setChecked(!checked) }  // считает лайки
+        checked={checkedLike}
+         onClick={() => setCheckedLike(!checkedLike) }  
          />
          <div className='counter'>{likesCounter} likes</div> 
-         <IconButton aria-label="share" onClick={() => deleteCard(id)} > {/*// кнопка удалить ??? как связать с кнопкой из Filter и прогнать по условиям//  */} 
+         <IconButton aria-label="share" onClick={() => deleteCard(id)} > 
           <DeleteIcon/>
         </IconButton>
       </CardActions>
