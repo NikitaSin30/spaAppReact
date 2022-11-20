@@ -7,7 +7,6 @@ import getData from './ConnectApi/getDataApi';
 import { HEROES_API } from './ConnectApi/constants';
 
 
-
 function App() {
 
   const [heroes, setHeroes] = useState([]);
@@ -42,12 +41,14 @@ function App() {
   setHeroes(prevState => prevState.filter(el => el.id !== id))
   }
 
- function checkFavorites() {
+ function onCheckFavorites() {
     setCheckedFavorites(!checkedFavorites)
      };
 
- function checkLike (setLikeCounter) {
-     setLikeCounter(likesCounter += 1)
+ function checkLike () {
+
+      setLikeCounter(likesCounter += 1)
+     setHeroes(prevState => prevState.filter(el => el.isFavorite = true))
 
    }
 
@@ -60,14 +61,13 @@ function App() {
     <div className="App">
         <Header></Header>
         <Filter
-        showFavorites={checkedFavorites}
-        checkFavorites={checkFavorites}>
+        checkedFavorites={checkedFavorites}
+        onCheckFavorites={()=> onCheckFavorites()}>
         </Filter>
         <CardBlock
          heroes={heroes}
          likesCounter={likesCounter}
-         checkedLike={checkLike}
-        // setCheckedLike={setCheckedLike}
+         checkLike={checkLike}
         deleteCard={deleteCard}
         ></CardBlock>
       </div>
