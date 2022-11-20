@@ -8,41 +8,9 @@ import getData from "../../ConnectApi/getDataApi";
 
 
 
-function CardBlock({heroes,deleteCard,checedLike,checkLike,likesCounter,handleBadgeVisibility,invisible}) {
-
-  //  const [heroes, setHeroes] = useState([]);   
-
-  //  useEffect(() => {
-  //   getHeroes(HEROES_API);
-  // }, []);
-
+function CardBlock({heroes,deleteCard,}) {
 
  
-
-
-  // const getHeroes = async (url) => {  
-  //   try {
-  //   const response = await getData(url);
-  //   const itemList = response.results.map((e) => {
-  //     return {
-  //       image: e.image,
-  //       name: e.name,
-  //       id: e.id
-  //     }; 
-      
-  //   });
-  //   setHeroes(itemList);
-    
-  //   } catch (error) {
-  //       alert(error, "Ошибка загрузки c сервера" )
-  //   }       
-  //  };
- 
-  
-   
-  //  function deleteCard (id) {
-  // setHeroes(prevState => prevState.filter(el => el.id !== id))
-  // }
 
   
 

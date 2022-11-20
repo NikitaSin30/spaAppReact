@@ -10,6 +10,10 @@ import { HEROES_API } from './ConnectApi/constants';
 
 function App() { 
   
+  // Нужно связать состояние invisible в Fliter с состояние CheckedLike 
+  // в CardItem . Когда invisible true остаются только лайкнутые карточки
+
+
   const [heroes, setHeroes] = useState([]);  
 
     

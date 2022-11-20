@@ -5,7 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 
  function Filter() {
-  
+  // нужно связать состояние invisible с 
   const [invisible, setInvisible] = useState(false);  
 
   const handleBadgeVisibility = () => {
