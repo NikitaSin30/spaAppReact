@@ -14,15 +14,18 @@ import Favorite from '@mui/icons-material/Favorite';
 
  function CardItem({name,image,deleteCard,id,}) {
  
+  const [checkedLike,setCheckedLike] = useState(false); 
+   let [likesCounter, setLikeCounter] = useState(0)
   
-const [checkedLike,setCheckedLike] = useState(false);  
- 
-
- let likesCounter = 0
-    if(checkedLike){
-        likesCounter += 1
-    } 
- 
+   
+  function checkLike () {
+    setCheckedLike(!checkedLike)
+  if(!checkedLike){
+   setLikeCounter(likesCounter += 1)
+} else {
+  setLikeCounter(likesCounter -= 1)
+}
+}
  
   return (
     
@@ -44,7 +47,7 @@ const [checkedLike,setCheckedLike] = useState(false);
        icon={<FavoriteBorder />}
         checkedIcon={<Favorite/>} 
         checked={checkedLike}
-         onClick={() => setCheckedLike(!checkedLike) }  
+         onClick={checkLike}  
          />
          <div className='counter'>{likesCounter} likes</div> 
          <IconButton aria-label="share" onClick={() => deleteCard(id)} > 

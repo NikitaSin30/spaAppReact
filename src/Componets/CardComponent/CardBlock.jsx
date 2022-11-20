@@ -8,38 +8,41 @@ import getData from "../../ConnectApi/getDataApi";
 
 
 
-function CardBlock() {
+function CardBlock({heroes,deleteCard,checedLike,checkLike,likesCounter,handleBadgeVisibility,invisible}) {
 
-   const [heroes, setHeroes] = useState([]);   
+  //  const [heroes, setHeroes] = useState([]);   
 
-   useEffect(() => {
-    getHeroes(HEROES_API);
-  }, []);
+  //  useEffect(() => {
+  //   getHeroes(HEROES_API);
+  // }, []);
 
 
-  const getHeroes = async (url) => {  
-    try {
-    const response = await getData(url);
-    const itemList = response.results.map((e) => {
-      return {
-        image: e.image,
-        name: e.name,
-        id: e.id
-      }; 
+ 
+
+
+  // const getHeroes = async (url) => {  
+  //   try {
+  //   const response = await getData(url);
+  //   const itemList = response.results.map((e) => {
+  //     return {
+  //       image: e.image,
+  //       name: e.name,
+  //       id: e.id
+  //     }; 
       
-    });
-    setHeroes(itemList);
+  //   });
+  //   setHeroes(itemList);
     
-    } catch (error) {
-        alert(error, "Ошибка загрузки c сервера" )
-    }       
-   };
+  //   } catch (error) {
+  //       alert(error, "Ошибка загрузки c сервера" )
+  //   }       
+  //  };
  
   
    
-   function deleteCard (id) {
-  setHeroes(prevState => prevState.filter(el => el.id !== id))
-  }
+  //  function deleteCard (id) {
+  // setHeroes(prevState => prevState.filter(el => el.id !== id))
+  // }
 
   
 
@@ -48,7 +51,12 @@ function CardBlock() {
     <div className="_container">
       <div className="block__grid">
         {heroes.map((item) => {
-          return <CardItem   heroes ={heroes} deleteCard= {deleteCard} key = {item.id} id={item.id} image={item.image} name={item.name} />;
+          return <CardItem  
+             deleteCard= {deleteCard} 
+             key = {item.id} 
+             id={item.id}
+              image={item.image} 
+              name={item.name} />;
         })}
       </div>
     </div>

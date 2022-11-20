@@ -6,13 +6,13 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
  function Filter() {
   
-  const [invisible, setInvisible] = useState(false);
+  const [invisible, setInvisible] = useState(false);  
 
   const handleBadgeVisibility = () => {
-    setInvisible(!invisible);
-
-    };
-    
+    setInvisible(!invisible)
+     };
+   
+ 
     
 
 
@@ -35,6 +35,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
           sx={{ color: 'text.primary' }}
           control={<Switch checked={invisible} onChange={handleBadgeVisibility} />}
           label="Show favorites"
+         
         />
       </div>
     </Box>
