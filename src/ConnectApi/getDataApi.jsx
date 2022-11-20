@@ -1,5 +1,4 @@
-import { Class } from "@mui/icons-material"
-import { Component } from "react"
+
 
 
 const getData = async (url) => {
@@ -8,7 +7,7 @@ const getData = async (url) => {
     const response = await res.json()
    console.log(response)
     return response
-    } 
+    }
     catch (error) {
         console.log(error)
     }
@@ -18,7 +17,3 @@ const getData = async (url) => {
 
 
 export default getData
-
-class r extends Component {
-    
-}
