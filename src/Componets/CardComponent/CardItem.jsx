@@ -36,7 +36,7 @@ import Favorite from '@mui/icons-material/Favorite';
        icon={<FavoriteBorder />}
         checkedIcon={<Favorite/>}
          checked = {isFavorite}
-         onClick={()=>checkLike()}
+         onClick={() => checkLike(id)}
          />
          <div className='counter'>{likesCounter} likes</div>
          <IconButton aria-label="share" onClick={() => deleteCard(id)} >

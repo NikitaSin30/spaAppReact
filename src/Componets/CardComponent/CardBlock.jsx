@@ -11,8 +11,8 @@ function CardBlock({heroes,deleteCard,likesCounter,checkLike}) {
         {heroes.map((item) => {
           return <CardItem
              deleteCard= {deleteCard}
-             key = {item.id}
-             id={item.id}
+              key = {item.id}
+              id={item.id}
               image={item.image}
               name={item.name}
               isFavorite ={item.isFavorite}

@@ -5,7 +5,11 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 
  function Filter(checkedFavorites,onCheckFavorites) {
-
+// const [a,b] = useState(false)
+// function c() {
+//   b(() => !a)
+//   console.log(1)
+// }
   return (
     <Box
       sx={{

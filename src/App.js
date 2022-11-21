@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import './App.css';
 import Header from './Componets/Header/Header';
 import CardBlock from "./Componets/CardComponent/CardBlock"
@@ -5,6 +6,7 @@ import Filter from './Componets/Filter/Filter';
 import { useEffect,useState } from 'react';
 import getData from './ConnectApi/getDataApi';
 import { HEROES_API } from './ConnectApi/constants';
+
 
 
 function App() {
@@ -42,19 +44,23 @@ function App() {
   }
 
  function onCheckFavorites() {
-    setCheckedFavorites(!checkedFavorites)
+    setCheckedFavorites(() => !checkedFavorites)
      };
 
- function checkLike () {
+ function checkLike (id) {
+  // setLikeCounter(() => likesCounter += 1)
+  setHeroes(prevState => prevState.map((el) => {
+    if(el.id === id){
+     return {...el,  isFavorite: true }
+        } else {
+      return el
+    }
 
-      setLikeCounter(likesCounter += 1)
-     setHeroes(prevState => prevState.filter(el => el.isFavorite = true))
+  })
+  )
+}
 
-   }
-
-  function filterLike(params) {
-
-  }
+  function filterLike(params) {}
 
   return (
 
@@ -62,7 +68,7 @@ function App() {
         <Header></Header>
         <Filter
         checkedFavorites={checkedFavorites}
-        onCheckFavorites={()=> onCheckFavorites()}>
+        onCheckFavorites={onCheckFavorites}>
         </Filter>
         <CardBlock
          heroes={heroes}
