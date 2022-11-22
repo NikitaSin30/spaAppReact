@@ -6,8 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
  function Filter({checkedFavorites,onCheckFavorites}) {
 
-let a = checkedFavorites
-console.log(a);
+
   return (
     <Box
       sx={{

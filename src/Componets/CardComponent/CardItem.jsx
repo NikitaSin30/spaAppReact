@@ -12,11 +12,11 @@ import Favorite from '@mui/icons-material/Favorite';
 
 
 
- function CardItem({name,image,deleteCard,id,isFavorite,likesCounter,onCheckLike}) {
+ function CardItem({name,image,deleteCard,id,isFavorite,likeCounter,onCheckLike}) {
 
   return (
 
-    <Card  id ="id" sx={{ maxWidth: 345 }}>
+    <Card  id = {id}   sx={{ maxWidth: 345 }}>
         <CardMedia
         component="img"
         height="194"
@@ -34,9 +34,9 @@ import Favorite from '@mui/icons-material/Favorite';
        icon={<FavoriteBorder />}
         checkedIcon={<Favorite/>}
          checked = {isFavorite}
-         onClick={onCheckLike}
+         onClick={() => onCheckLike(id)}
          />
-         <div className='counter'>{likesCounter} likes</div>
+         <div className='counter'>{likeCounter} likes</div>
          <IconButton aria-label="share" onClick={() => deleteCard(id)} >
           <DeleteIcon/>
         </IconButton>

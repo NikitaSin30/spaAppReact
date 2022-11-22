@@ -12,24 +12,23 @@ import { HEROES_API } from './ConnectApi/constants';
 function App() {
 
   const [heroes, setHeroes] = useState([]);
-  let [likesCounter, setLikeCounter] = useState(0);
+  // let [likesCounter, setLikeCounter] = useState(0);
   const [checkedFavorites, setCheckedFavorites ] = useState(false);
-  const [isFavorite,setIsFavorite] = useState(false);
+  // const [isFavorite,setIsFavorite] = useState(false);
+
 
  const getHeroes = async (url) => {
   try {
   const response = await getData(url);
-  const itemList = response.results.map((e) => {
+  setHeroes(response.results.map((e) => {
     return {
       image: e.image,
       name: e.name,
       id: e.id,
-      // isFavorite: false
+      isFavorite: false,
+      likeCounter: 0,
     };
-
-  });
-  setHeroes(itemList);
-
+  }));
   } catch (error) {
       alert(error, "Ошибка загрузки c сервера" )
   }
@@ -40,32 +39,30 @@ function App() {
 }, []);
 
  function deleteCard (id) {
+  console.log(id)
   setHeroes(prevState => prevState.filter(el => el.id !== id))
   }
 
-function onCheckLike () {
-  setIsFavorite(!isFavorite)
-  if(!isFavorite){
-    setLikeCounter(likesCounter +=1)
-  } else {
-    setLikeCounter(likesCounter -= 1)
-  }
-  }
-// function onCheckLike (id) {
-//   setHeroes(heroes => heroes.map(el => {
-//     if(el.id === id){
-//       return {el , isFavorite: true}
-//     } else {
-//       return { el , isFavorite: false}
-//     }
-//   }))
-// }
+function onCheckLike (id) {
+  setHeroes(heroes => heroes.map(el => {
+    if(el.id === id && !el.isFavorite){
+       el.isFavorite =  true
+       el.likeCounter +=1
+       return {...el}
+    } else if (el.id === id  && el.isFavorite) {
+       el.isFavorite = false
+       el.likeCounter -= 1
+       return{...el}
+    } else  {
+      return {...el}
+      }
+  }))
+}
 
-//  Фильтрация сделано , но только через isFavorite в элементе heroes
  function onCheckFavorites() {
     setCheckedFavorites(!checkedFavorites)
     setHeroes(prevState => prevState.filter(el => el.isFavorite === true))
-     };
+     }
 
   return (
 
@@ -78,7 +75,8 @@ function onCheckLike () {
         </Filter>
         <CardBlock
          heroes={heroes}
-         likesCounter={likesCounter}
+        //  likesCounter={likesCounter}
+        // key={heroes.id}
          onCheckLike={onCheckLike}
         deleteCard={deleteCard}
         ></CardBlock>

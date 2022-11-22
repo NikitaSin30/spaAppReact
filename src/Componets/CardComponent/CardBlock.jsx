@@ -4,20 +4,21 @@ import { React } from "react";
 
 
 
-function CardBlock({heroes,deleteCard,likesCounter,onCheckLike,isFavorite}) {
+function CardBlock({heroes,deleteCard,likesCounter,onCheckLike,isFavorite,}) {
   return (
     <div className="_container">
       <div className="block__grid">
         {heroes.map((item) => {
           return <CardItem
              deleteCard= {deleteCard}
+             id={item.id}
               key = {item.id}
-              id={item.id}
               image={item.image}
               name={item.name}
               isFavorite ={isFavorite}
               likesCounter={likesCounter}
               onCheckLike={onCheckLike}
+              likeCounter={item.likeCounter}
                />;
         })}
       </div>

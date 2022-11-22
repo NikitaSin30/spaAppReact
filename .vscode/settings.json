@@ -1,0 +1,4 @@
+{
+    "js/ts.implicitProjectConfig.module": "ES2022",
+    "prettier.trailingComma": "all"
+}
