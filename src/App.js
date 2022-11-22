@@ -48,9 +48,9 @@ function App() {
      };
 
  function checkLike (id) {
-  // setLikeCounter(() => likesCounter += 1)
   setHeroes(prevState => prevState.map((el) => {
     if(el.id === id){
+      setLikeCounter(() => likesCounter += 1)
      return {...el,  isFavorite: true }
         } else {
       return el
