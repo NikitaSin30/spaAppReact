@@ -4,12 +4,10 @@ import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 
- function Filter(checkedFavorites,onCheckFavorites) {
-// const [a,b] = useState(false)
-// function c() {
-//   b(() => !a)
-//   console.log(1)
-// }
+ function Filter({checkedFavorites,onCheckFavorites}) {
+
+let a = checkedFavorites
+console.log(a);
   return (
     <Box
       sx={{
@@ -27,7 +25,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
       <div>
         <FormControlLabel
           sx={{ color: 'text.primary' }}
-          control={<Switch checked={checkedFavorites} onChange = {()=>onCheckFavorites()} />}
+          control={<Switch checked={checkedFavorites} onChange = {onCheckFavorites} />}
           label="Show favorites"
 
         />

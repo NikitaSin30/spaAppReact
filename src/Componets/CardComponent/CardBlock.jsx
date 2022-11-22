@@ -4,7 +4,7 @@ import { React } from "react";
 
 
 
-function CardBlock({heroes,deleteCard,likesCounter,checkLike}) {
+function CardBlock({heroes,deleteCard,likesCounter,onCheckLike,isFavorite}) {
   return (
     <div className="_container">
       <div className="block__grid">
@@ -15,9 +15,9 @@ function CardBlock({heroes,deleteCard,likesCounter,checkLike}) {
               id={item.id}
               image={item.image}
               name={item.name}
-              isFavorite ={item.isFavorite}
+              isFavorite ={isFavorite}
               likesCounter={likesCounter}
-              checkLike={checkLike}
+              onCheckLike={onCheckLike}
                />;
         })}
       </div>

@@ -12,9 +12,9 @@ import { HEROES_API } from './ConnectApi/constants';
 function App() {
 
   const [heroes, setHeroes] = useState([]);
-  let [likesCounter, setLikeCounter] = useState(0)
-  const [checkedFavorites, setCheckedFavorites ] = useState(false)
-
+  let [likesCounter, setLikeCounter] = useState(0);
+  const [checkedFavorites, setCheckedFavorites ] = useState(false);
+  const [isFavorite,setIsFavorite] = useState(false);
 
  const getHeroes = async (url) => {
   try {
@@ -24,7 +24,7 @@ function App() {
       image: e.image,
       name: e.name,
       id: e.id,
-      isFavorite: false
+      // isFavorite: false
     };
 
   });
@@ -43,37 +43,43 @@ function App() {
   setHeroes(prevState => prevState.filter(el => el.id !== id))
   }
 
+function onCheckLike () {
+  setIsFavorite(!isFavorite)
+  if(!isFavorite){
+    setLikeCounter(likesCounter +=1)
+  } else {
+    setLikeCounter(likesCounter -= 1)
+  }
+  }
+// function onCheckLike (id) {
+//   setHeroes(heroes => heroes.map(el => {
+//     if(el.id === id){
+//       return {el , isFavorite: true}
+//     } else {
+//       return { el , isFavorite: false}
+//     }
+//   }))
+// }
+
+//  Фильтрация сделано , но только через isFavorite в элементе heroes
  function onCheckFavorites() {
-    setCheckedFavorites(() => !checkedFavorites)
+    setCheckedFavorites(!checkedFavorites)
+    setHeroes(prevState => prevState.filter(el => el.isFavorite === true))
      };
-
- function checkLike (id) {
-  setHeroes(prevState => prevState.map((el) => {
-    if(el.id === id){
-      setLikeCounter(() => likesCounter += 1)
-     return {...el,  isFavorite: true }
-        } else {
-      return el
-    }
-
-  })
-  )
-}
-
-  function filterLike(params) {}
 
   return (
 
     <div className="App">
         <Header></Header>
         <Filter
+        // isFavorite ={isFavorite}
         checkedFavorites={checkedFavorites}
         onCheckFavorites={onCheckFavorites}>
         </Filter>
         <CardBlock
          heroes={heroes}
          likesCounter={likesCounter}
-         checkLike={checkLike}
+         onCheckLike={onCheckLike}
         deleteCard={deleteCard}
         ></CardBlock>
       </div>
