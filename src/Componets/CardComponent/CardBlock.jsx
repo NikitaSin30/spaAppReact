@@ -1,31 +1,38 @@
-import CardItem from "./CardItem";
-import "./CardBlock.css";
-import { React } from "react";
+import CardItem from './CardItem';
+import './CardBlock.css';
+import { React } from 'react';
 
-
-
-function CardBlock({heroes,deleteCard,likesCounter,onCheckLike,isFavorite,}) {
-  return (
-    <div className="_container">
-      <div className="block__grid">
-        {heroes.map((item) => {
-          return <CardItem
-             deleteCard= {deleteCard}
-             id={item.id}
-              key = {item.id}
-              image={item.image}
-              name={item.name}
-              isFavorite ={isFavorite}
-              likesCounter={likesCounter}
-              onCheckLike={onCheckLike}
-              likeCounter={item.likeCounter}
-               />;
-        })}
-      </div>
-    </div>
-  );
+function CardBlock({
+   heroes,
+   deleteCard,
+   likesCounter,
+   onCheckLike,
+   isFavorite,
+   checkedFavorites,
+}) {
+   return (
+      <>
+         <div className="_container">
+            <div className="block__grid">
+               {heroes.map((item) => {
+                  return (
+                     <CardItem
+                        deleteCard={deleteCard}
+                        id={item.id}
+                        key={item.id}
+                        image={item.image}
+                        name={item.name}
+                        isFavorite={isFavorite}
+                        likesCounter={likesCounter}
+                        onCheckLike={onCheckLike}
+                        likeCounter={item.likeCounter}
+                     />
+                  );
+               })}
+            </div>
+         </div>
+      </>
+   );
 }
-
-
 
 export default CardBlock;

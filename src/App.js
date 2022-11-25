@@ -3,15 +3,17 @@ import './App.css';
 import Header from './Componets/Header/Header';
 import CardBlock from './Componets/CardComponent/CardBlock';
 import Filter from './Componets/Filter/Filter';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import getHeroes from './ConnectApi/getHeroes';
 import { HEROES_API } from './ConnectApi/constants';
+import ErrorMessage from './Componets/ErrorMessage/ErrorMessage';
+
+
 
 function App() {
    const [heroes, setHeroes] = useState([]);
-   // let [likesCounter, setLikeCounter] = useState(0);
    const [checkedFavorites, setCheckedFavorites] = useState(false);
-   // const [isFavorite,setIsFavorite] = useState(false);
+   const [messageError, setMessageError] = useState(false);
 
    const getHeroesArray = async (url) => {
       try {
@@ -28,11 +30,13 @@ function App() {
             }),
          );
       } catch (error) {
-         alert(error, 'Ошибка загрузки c сервера');
+         console.log(new Error(error));
+         setMessageError(!messageError);
       }
    };
 
    useEffect(() => {
+      console.log(1);
       getHeroesArray(HEROES_API);
    }, []);
 
@@ -61,27 +65,35 @@ function App() {
 
    function onCheckFavorites() {
       setCheckedFavorites(!checkedFavorites);
-      setHeroes((prevState) =>
-         prevState.filter((el) => el.isFavorite === true),
-      );
+      // if (!checkedFavorites) {
+      //    setHeroes((prevState) =>
+      //       prevState.filter((el) => el.isFavorite === true),
+      //    );
+      // } else {
+      //    getHeroesArray(HEROES_API);
+      // }
    }
+
 
    return (
       <div className="App">
          <Header></Header>
          <Filter
-            // isFavorite ={isFavorite}
             checkedFavorites={checkedFavorites}
             onCheckFavorites={onCheckFavorites}
          ></Filter>
-         <CardBlock
-            heroes={heroes}
-            //  likesCounter={likesCounter}
-            // key={heroes.id}
-            onCheckLike={onCheckLike}
-            deleteCard={deleteCard}
-         ></CardBlock>
+         {messageError ? (
+            <ErrorMessage />
+         ) : (
+            <CardBlock
+               checkedFavorites ={checkedFavorites}
+               heroes={heroes}
+               onCheckLike={onCheckLike}
+               deleteCard={deleteCard}
+            />
+         )}
       </div>
    );
 }
+
 export default App;
