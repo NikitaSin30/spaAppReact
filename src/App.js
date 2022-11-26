@@ -36,12 +36,10 @@ function App() {
    };
 
    useEffect(() => {
-      console.log(1);
       getHeroesArray(HEROES_API);
    }, []);
 
    function deleteCard(id) {
-      console.log(id);
       setHeroes((prevState) => prevState.filter((el) => el.id !== id));
    }
 
@@ -65,6 +63,7 @@ function App() {
 
    function onCheckFavorites() {
       setCheckedFavorites(!checkedFavorites);
+      console.log(1)
       // if (!checkedFavorites) {
       //    setHeroes((prevState) =>
       //       prevState.filter((el) => el.isFavorite === true),
