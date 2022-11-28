@@ -2,7 +2,6 @@ import CardItem from './CardItem';
 import './CardBlock.css';
 import { React } from 'react';
 
-
 function CardBlock({
    heroes,
    deleteCard,
@@ -11,45 +10,17 @@ function CardBlock({
    isFavorite,
    checkedFavorites,
 }) {
+   function filterHeroes() {
+      return heroes.filter((item) => item.isFavorite === true);
+   }
+
+   const customHeroes = checkedFavorites ? filterHeroes() : heroes;
    return (
       <>
-         {/* {checkedFavorites ? <ErrorMessage/> : null } */}
          <div className="_container">
             <div className="block__grid">
-               {checkedFavorites
-                  ? heroes.filter((item) => {
-                       if (item.isFavorite === true) {
-                          return (
-                             <CardItem
-                                deleteCard={deleteCard}
-                                id={item.id}
-                                key={item.id}
-                                image={item.image}
-                                name={item.name}
-                                isFavorite={isFavorite}
-                                likesCounter={likesCounter}
-                                onCheckLike={onCheckLike}
-                                likeCounter={item.likeCounter}
-                             />
-                          );
-                       }
-                    })
-                  : heroes.map((item) => {
-                       return (
-                          <CardItem
-                             deleteCard={deleteCard}
-                             id={item.id}
-                             key={item.id}
-                             image={item.image}
-                             name={item.name}
-                             isFavorite={isFavorite}
-                             likesCounter={likesCounter}
-                             onCheckLike={onCheckLike}
-                             likeCounter={item.likeCounter}
-                          />
-                       );
-                    })}
-               {/* {   heroes.map((item) => {
+               {
+               customHeroes.map((item) => {
                   return (
                      <CardItem
                         deleteCard={deleteCard}
@@ -63,7 +34,8 @@ function CardBlock({
                         likeCounter={item.likeCounter}
                      />
                   );
-               })} */}
+               })
+               }
             </div>
          </div>
       </>

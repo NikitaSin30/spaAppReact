@@ -1,3 +1,1 @@
-
-
-export const HEROES_API = "https://rickandmortyapi.com/api/character"
+export const GET_HEROES_URL = 'https://rickandmortyapi.com/api/character';

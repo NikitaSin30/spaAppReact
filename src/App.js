@@ -3,41 +3,43 @@ import './App.css';
 import Header from './Componets/Header/Header';
 import CardBlock from './Componets/CardComponent/CardBlock';
 import Filter from './Componets/Filter/Filter';
-import { useCallback, useEffect, useState } from 'react';
-import getHeroes from './ConnectApi/getHeroes';
-import { HEROES_API } from './ConnectApi/constants';
+import { useEffect, useState } from 'react';
+import { getHeroes } from './ConnectApi/getHeroes';
 import ErrorMessage from './Componets/ErrorMessage/ErrorMessage';
-
-
 
 function App() {
    const [heroes, setHeroes] = useState([]);
-   const [checkedFavorites, setCheckedFavorites] = useState(false);
+   const [checkedFavorites, isCheckedFavorites] = useState(false);
    const [messageError, setMessageError] = useState(false);
 
-   const getHeroesArray = async (url) => {
+   const getHeroesArray = async () => {
+      let result;
       try {
-         const response = await getHeroes(url);
-         setHeroes(
-            response.results.map((e) => {
-               return {
-                  image: e.image,
-                  name: e.name,
-                  id: e.id,
-                  isFavorite: false,
-                  likeCounter: 0,
-               };
-            }),
-         );
+         result = await getHeroes();
       } catch (error) {
-         console.log(new Error(error));
+         console.log(error);
          setMessageError(!messageError);
       }
+      modifySourceHeroes(result);
    };
 
    useEffect(() => {
-      getHeroesArray(HEROES_API);
+      getHeroesArray();
    }, []);
+
+   function modifySourceHeroes(data) {
+      setHeroes(
+         data.results.map((hero) => {
+            return {
+               image: hero.image,
+               name: hero.name,
+               id: hero.id,
+               isFavorite: false,
+               likeCounter: 0,
+            };
+         }),
+      );
+   }
 
    function deleteCard(id) {
       setHeroes((prevState) => prevState.filter((el) => el.id !== id));
@@ -49,43 +51,34 @@ function App() {
             if (el.id === id && !el.isFavorite) {
                el.isFavorite = true;
                el.likeCounter += 1;
-               return { ...el };
-            } else if (el.id === id && el.isFavorite) {
+               return el;
+            }
+            if (el.id === id && el.isFavorite) {
                el.isFavorite = false;
                el.likeCounter -= 1;
-               return { ...el };
-            } else {
-               return { ...el };
+               return el;
             }
+            return el;
          }),
       );
    }
 
-   function onCheckFavorites() {
-      setCheckedFavorites(!checkedFavorites);
-      console.log(1)
-      // if (!checkedFavorites) {
-      //    setHeroes((prevState) =>
-      //       prevState.filter((el) => el.isFavorite === true),
-      //    );
-      // } else {
-      //    getHeroesArray(HEROES_API);
-      // }
+   function onChangeFavoriteFlag() {
+      isCheckedFavorites(!checkedFavorites);
    }
-
 
    return (
       <div className="App">
          <Header></Header>
          <Filter
             checkedFavorites={checkedFavorites}
-            onCheckFavorites={onCheckFavorites}
+            onChangeFavoriteFlag={onChangeFavoriteFlag}
          ></Filter>
          {messageError ? (
             <ErrorMessage />
          ) : (
             <CardBlock
-               checkedFavorites ={checkedFavorites}
+               checkedFavorites={checkedFavorites}
                heroes={heroes}
                onCheckLike={onCheckLike}
                deleteCard={deleteCard}

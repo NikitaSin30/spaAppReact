@@ -1,12 +1,12 @@
-const getHeroes = async (url) => {
+import { GET_HEROES_URL } from "./constants";
+
+export async function getHeroes ()  {
    try {
-      const res = await fetch(url);
+      const res = await fetch(GET_HEROES_URL);
       const response = await res.json();
-      console.log(response);
       return response;
    } catch (error) {
-      console.log(error);
+      console.log(error)
+     throw error
    }
 };
-
-export default getHeroes;

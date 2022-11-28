@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -49,7 +50,7 @@ input,
 button,
 textarea {
   font-family: inherit;
-  
+
 }
 
 input::-ms-clear {
@@ -109,7 +110,7 @@ h6 {
     background-color: #583939;
     font-size: 22px;
   }
-  
+
   ._container {
     max-width: 1330px;
     margin: 0 auto;
@@ -119,6 +120,5 @@ h6 {
 
   .article-text{
     background-color: #583939;
-    
-  } 
 
+  }
