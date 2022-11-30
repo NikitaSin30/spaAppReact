@@ -3,7 +3,6 @@ import './CardBlock.css';
 import { React } from 'react';
 import { useMemo } from 'react';
 
-
 function CardBlock({
    heroes,
    deleteCard,
@@ -12,10 +11,6 @@ function CardBlock({
    isFavorite,
    checkedFavorites,
 }) {
-   // function filterHeroes() {
-   //    return heroes.filter((item) => item.isFavorite === true);
-   // }
-
    const filterHeroes = useMemo(() => {
       return heroes.filter((item) => item.isFavorite === true);
    }, [heroes]);

@@ -24,7 +24,6 @@ function App() {
    };
 
    useEffect(() => {
-      console.log(1)
       getHeroesArray();
    }, []);
 
