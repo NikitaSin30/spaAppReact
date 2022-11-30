@@ -1,6 +1,8 @@
 import CardItem from './CardItem';
 import './CardBlock.css';
 import { React } from 'react';
+import { useMemo } from 'react';
+import { useEffect } from 'react';
 
 function CardBlock({
    heroes,
@@ -10,17 +12,21 @@ function CardBlock({
    isFavorite,
    checkedFavorites,
 }) {
-   function filterHeroes() {
-      return heroes.filter((item) => item.isFavorite === true);
-   }
+   // function filterHeroes() {
+   //    return heroes.filter((item) => item.isFavorite === true);
+   // }
 
-   const customHeroes = checkedFavorites ? filterHeroes() : heroes;
+   const filterHeroes = useMemo(() => {
+      return heroes.filter((item) => item.isFavorite === true);
+   }, [heroes]);
+
+   const customHeroes = checkedFavorites ? filterHeroes : heroes;
+
    return (
       <>
          <div className="_container">
             <div className="block__grid">
-               {
-               customHeroes.map((item) => {
+               {customHeroes.map((item) => {
                   return (
                      <CardItem
                         deleteCard={deleteCard}
@@ -34,8 +40,7 @@ function CardBlock({
                         likeCounter={item.likeCounter}
                      />
                   );
-               })
-               }
+               })}
             </div>
          </div>
       </>
