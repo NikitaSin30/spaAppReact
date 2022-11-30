@@ -2,7 +2,7 @@ import CardItem from './CardItem';
 import './CardBlock.css';
 import { React } from 'react';
 import { useMemo } from 'react';
-import { useEffect } from 'react';
+
 
 function CardBlock({
    heroes,
