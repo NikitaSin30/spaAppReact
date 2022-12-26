@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/spaAppReact/static/css/main.7171b404.css",
-    "main.js": "/spaAppReact/static/js/main.7976dd5d.js",
-    "static/js/787.a95b438b.chunk.js": "/spaAppReact/static/js/787.a95b438b.chunk.js",
+    "main.css": "/spaAppReact/static/css/main.55e2bbfc.css",
+    "main.js": "/spaAppReact/static/js/main.594c4f17.js",
     "index.html": "/spaAppReact/index.html",
-    "main.7171b404.css.map": "/spaAppReact/static/css/main.7171b404.css.map",
-    "main.7976dd5d.js.map": "/spaAppReact/static/js/main.7976dd5d.js.map",
-    "787.a95b438b.chunk.js.map": "/spaAppReact/static/js/787.a95b438b.chunk.js.map"
+    "main.55e2bbfc.css.map": "/spaAppReact/static/css/main.55e2bbfc.css.map",
+    "main.594c4f17.js.map": "/spaAppReact/static/js/main.594c4f17.js.map"
   },
   "entrypoints": [
-    "static/css/main.7171b404.css",
-    "static/js/main.7976dd5d.js"
+    "static/css/main.55e2bbfc.css",
+    "static/js/main.594c4f17.js"
   ]
 }
