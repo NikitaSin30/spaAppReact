@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -15,7 +15,6 @@ function CardItem({
    image,
    deleteCard,
    id,
-   isFavorite,
    likeCounter,
    onCheckLike,
 }) {
@@ -37,7 +36,6 @@ function CardItem({
                className="like"
                icon={<FavoriteBorder />}
                checkedIcon={<Favorite />}
-               checked={isFavorite}
                onClick={() => onCheckLike(id)}
             />
             <div className="counter">{likeCounter} likes</div>

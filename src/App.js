@@ -6,21 +6,25 @@ import Filter from './Componets/Filter/Filter';
 import { useEffect, useState } from 'react';
 import { getHeroes } from './ConnectApi/getHeroes';
 import ErrorMessage from './Componets/ErrorMessage/ErrorMessage';
+import { useDispatch, useSelector } from 'react-redux';
+import { setHeroesRickyMorty, setErrorStatus } from './store/actions/index.js';
 
 function App() {
-   const [heroes, setHeroes] = useState([]);
    const [checkedFavorites, isCheckedFavorites] = useState(false);
-   const [messageError, setMessageError] = useState(false);
+   const errorStatus = useSelector(
+      (state) => state.reducerRickMorty.selectedError,
+   );
+   const dispatch = useDispatch();
 
    const getHeroesArray = async () => {
-      let result;
       try {
-         result = await getHeroes();
+         const result = await getHeroes();
+         const heroes = modifySourceHeroes(result);
+         dispatch(setHeroesRickyMorty(heroes));
       } catch (error) {
          console.log(error);
-         setMessageError(!messageError);
+         dispatch(setErrorStatus());
       }
-      modifySourceHeroes(result);
    };
 
    useEffect(() => {
@@ -28,40 +32,18 @@ function App() {
    }, []);
 
    function modifySourceHeroes(data) {
-      setHeroes(
-         data.results.map((hero) => {
-            return {
-               image: hero.image,
-               name: hero.name,
-               id: hero.id,
-               isFavorite: false,
-               likeCounter: 0,
-            };
-         }),
-      );
+      const heroes = data.results.map((hero) => {
+         return {
+            image: hero.image,
+            name: hero.name,
+            id: hero.id,
+            isFavorite: false,
+            likeCounter: 0,
+         };
+      });
+      return heroes;
    }
-
-   function deleteCard(id) {
-      setHeroes((prevState) => prevState.filter((el) => el.id !== id));
-   }
-
-   function onCheckLike(id) {
-      setHeroes((heroes) =>
-         heroes.map((el) => {
-            if (el.id === id && !el.isFavorite) {
-               el.isFavorite = true;
-               el.likeCounter += 1;
-               return el;
-            }
-            if (el.id === id && el.isFavorite) {
-               el.isFavorite = false;
-               el.likeCounter -= 1;
-               return el;
-            }
-            return el;
-         }),
-      );
-   }
+   // 'https://api.sampleapis.com/simpsons/characters'
 
    function onChangeFavoriteFlag() {
       isCheckedFavorites(!checkedFavorites);
@@ -74,15 +56,10 @@ function App() {
             checkedFavorites={checkedFavorites}
             onChangeFavoriteFlag={onChangeFavoriteFlag}
          ></Filter>
-         {messageError ? (
+         {errorStatus ? (
             <ErrorMessage />
          ) : (
-            <CardBlock
-               checkedFavorites={checkedFavorites}
-               heroes={heroes}
-               onCheckLike={onCheckLike}
-               deleteCard={deleteCard}
-            />
+            <CardBlock checkedFavorites={checkedFavorites} />
          )}
       </div>
    );
