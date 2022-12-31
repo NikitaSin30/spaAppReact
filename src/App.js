@@ -16,34 +16,19 @@ function App() {
    );
    const dispatch = useDispatch();
 
-   const getHeroesArray = async () => {
+   const setHeroes = async () => {
       try {
-         const result = await getHeroes();
-         const heroes = modifySourceHeroes(result);
+         const heroes = await getHeroes();
          dispatch(setHeroesRickyMorty(heroes));
       } catch (error) {
-         console.log(error);
          dispatch(setErrorStatus());
       }
    };
 
    useEffect(() => {
-      getHeroesArray();
+      setHeroes();
    }, []);
 
-   function modifySourceHeroes(data) {
-      const heroes = data.results.map((hero) => {
-         return {
-            image: hero.image,
-            name: hero.name,
-            id: hero.id,
-            isFavorite: false,
-            likeCounter: 0,
-         };
-      });
-      return heroes;
-   }
-   // 'https://api.sampleapis.com/simpsons/characters'
 
    function onChangeFavoriteFlag() {
       isCheckedFavorites(!checkedFavorites);

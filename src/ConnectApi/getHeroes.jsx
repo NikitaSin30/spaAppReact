@@ -1,17 +1,15 @@
-import { GET_HEROES_URL } from "./constants";
+import { GET_HEROES_URL } from './constants';
 
-export async function getHeroes ()  {
+export async function getHeroes() {
    try {
-      const res = await fetch(GET_HEROES_URL);
-      const response = await res.json();
-      // modifySourceHeroes(response)
-      console.log(response);
-      return response;
+      const response = await fetch(GET_HEROES_URL);
+      const result = await response.json();
+      const heroes = await modifySourceHeroes(result);
+      return heroes;
    } catch (error) {
-      console.log(error)
-     throw error
+      throw new Error(error)
    }
-};
+}
 
 function modifySourceHeroes(data) {
    const heroes = data.results.map((hero) => {
