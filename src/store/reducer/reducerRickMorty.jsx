@@ -1,6 +1,7 @@
 const initialState = {
    heroes: [],
-   selectedError: false,
+   isError: false,
+   isLoading:false,
 };
 
 export const reducerRickMorty = (state = initialState, action) => {
@@ -9,6 +10,7 @@ export const reducerRickMorty = (state = initialState, action) => {
          return {
             ...state,
             heroes: action.payload,
+            isLoading: false,
          };
       case 'UPDATE_HEROES':
          return {
@@ -18,7 +20,12 @@ export const reducerRickMorty = (state = initialState, action) => {
       case 'ERROR_LOADING':
          return {
             ...state,
-            selectedError: true,
+            isError: true,
+         };
+       case 'LOADING':
+         return {
+            ...state,
+            isLoading: true,
          };
       default:
          return state;

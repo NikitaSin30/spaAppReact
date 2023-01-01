@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
+import { Button } from '@mui/material';
+import CommentCard from './CommentCard.jsx';
 
 function CardItem({
    name,
@@ -17,15 +19,20 @@ function CardItem({
    id,
    likeCounter,
    onCheckLike,
+   switchShowComments,
+   isComments
 }) {
+   let commemtBlock = isComments
    return (
       <Card id={id} sx={{ maxWidth: 345 }}>
-         <CardMedia
+         {
+            isComments ? null : <CardMedia
             component="img"
             height="194"
             alt="Paella dish"
             src={image}
          />
+         }
          <CardContent>
             <Typography variant="body2" color="text.secondary">
                {name}
@@ -42,7 +49,13 @@ function CardItem({
             <IconButton aria-label="share" onClick={() => deleteCard(id)}>
                <DeleteIcon />
             </IconButton>
+            <Button onClick={() =>switchShowComments(id)} size="md"  color="primary">
+          Коментировать
+        </Button>
          </CardActions>
+         {
+          commemtBlock ? <CommentCard/> : null
+         }
       </Card>
    );
 }

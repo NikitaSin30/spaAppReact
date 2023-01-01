@@ -1,6 +1,10 @@
-
+import loadingImg from './Тающие круги.gif'
 function LoadingComponets () {
     return (
-         <dib className="_container"></dib>
+         <div className="_container">
+             <img src={loadingImg} alt="" />
+         </div>
     )
 }
+
+export default LoadingComponets

@@ -34,6 +34,21 @@ function CardBlock({  checkedFavorites }) {
       });
       dispatch(setUpdateHeroesRickyMorty(updateHeroes));
    }
+   function switchShowComments(id) {
+      const updateHeroes = heroesRickMorty.map((el) => {
+         if (el.id === id && !el.isComments ) {
+            el.isComments = true;
+            return el;
+         }
+         if (el.id === id && el.isComments) {
+            el.isComments = false;
+            return el;
+         }
+         return el;
+      });
+      console.log(updateHeroes)
+      dispatch(setUpdateHeroesRickyMorty(updateHeroes));
+   }
 
    const customHeroes = checkedFavorites ? filterFavoriteHeroes : heroesRickMorty;
 
@@ -51,6 +66,8 @@ function CardBlock({  checkedFavorites }) {
                         name={item.name}
                         onCheckLike={onCheckLike}
                         likeCounter={item.likeCounter}
+                        isComments={item.isComments}
+                        switchShowComments={switchShowComments}
                      />
                   );
                })}

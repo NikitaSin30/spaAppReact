@@ -6,11 +6,18 @@ export const setHeroesRickyMorty = (heroes) => {
     }
 }
 
+export const setLoading = () => {
+    return{
+        type:'LOADING'
+    }
+}
+
 export const setErrorStatus = () =>{
     return {
         type:'ERROR_LOADING'
     }
 }
+
 
 export const setUpdateHeroesRickyMorty = (heroes) => {
     return {
