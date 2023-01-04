@@ -2,6 +2,7 @@ const initialState = {
    heroes: [],
    isError: false,
    isLoading:false,
+   comments:[]
 };
 
 export const reducerRickMorty = (state = initialState, action) => {
@@ -27,6 +28,12 @@ export const reducerRickMorty = (state = initialState, action) => {
             ...state,
             isLoading: true,
          };
+         case 'SET_COMMENT':
+         return {
+            ...state,
+            comments: [...state.comments,action.payload].sort((a, b) => a.id - b.id)
+         };
+
       default:
          return state;
    }

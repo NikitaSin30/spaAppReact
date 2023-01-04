@@ -19,7 +19,8 @@ function modifySourceHeroes(data) {
          id: hero.id,
          isFavorite: false,
          likeCounter: 0,
-         isComments:false
+         isCommentsShow:false,
+         comments:[],
       };
    });
    return heroes;

@@ -1,0 +1,24 @@
+.card{
+    height: 100%;
+}
+.card-icons{
+    display: flex;
+}
+.card-content{
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+.card-comment{
+    flex : 1 1 auto;
+    padding: 5px;
+}
+.card-list{
+    height: 180px;
+    overflow: scroll;
+}
+.card-list__item{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    padding: 10px;
+}
