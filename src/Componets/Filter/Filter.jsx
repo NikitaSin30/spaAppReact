@@ -1,9 +1,8 @@
-
 import Box from '@mui/material/Box';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
-function Filter({ checkedFavorites, onChangeFavoriteFlag }) {
+function Filter({ checkedFavorites, onChangeFavoriteFilter }) {
    return (
       <Box
          sx={{
@@ -24,7 +23,7 @@ function Filter({ checkedFavorites, onChangeFavoriteFlag }) {
                control={
                   <Switch
                      checked={checkedFavorites}
-                     onChange={onChangeFavoriteFlag}
+                     onChange={onChangeFavoriteFilter}
                   />
                }
                label="Show favorites"

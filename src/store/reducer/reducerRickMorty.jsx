@@ -1,8 +1,9 @@
 const initialState = {
    heroes: [],
+   remoteHeroes: [],
    isError: false,
-   isLoading:false,
-   comments:[]
+   isLoading: false,
+   comments: [],
 };
 
 export const reducerRickMorty = (state = initialState, action) => {
@@ -23,17 +24,33 @@ export const reducerRickMorty = (state = initialState, action) => {
             ...state,
             isError: true,
          };
-       case 'LOADING':
+      case 'LOADING':
          return {
             ...state,
             isLoading: true,
          };
-         case 'SET_COMMENT':
+      case 'SET_COMMENT':
          return {
             ...state,
-            comments: [...state.comments,action.payload].sort((a, b) => a.id - b.id)
+            comments: [...state.comments, action.payload],
          };
-
+      case 'REMOTE_CARD':
+         return {
+            ...state,
+            remoteHeroes: [...state.remoteHeroes, action.payload]
+               .flat()
+               .sort((a, b) => a.id - b.id),
+         };
+      case 'REBUILD_CARD':
+         return {
+            ...state,
+            heroes: [...state.heroes, action.payload]
+               .flat()
+               .sort((a, b) => a.id - b.id),
+            remoteHeroes: [...state.remoteHeroes].filter(
+               (item) => item.id !== action.payload[0].id,
+            ),
+         };
       default:
          return state;
    }

@@ -30,3 +30,17 @@ export const setCommentRickMorty = (comment) => {
       payload:comment
    };
 };
+
+export const setRemoteCard = (card) =>{
+   return {
+      type: 'REMOTE_CARD',
+      payload: card
+   }
+}
+
+export const setRebuildCard =(card) => {
+   return {
+      type:'REBUILD_CARD',
+      payload:card,
+   }
+}

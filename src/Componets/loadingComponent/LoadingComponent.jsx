@@ -1,10 +1,10 @@
-import loadingImg from './Тающие круги.gif'
-function LoadingComponets () {
-    return (
-         <div className="_container">
-             <img src={loadingImg} alt="" />
-         </div>
-    )
+import loadingImg from './Тающие круги.gif';
+function LoadingComponets() {
+   return (
+      <div className="_container">
+         <img src={loadingImg} alt="" />
+      </div>
+   );
 }
 
-export default LoadingComponets
+export default LoadingComponets;

@@ -9,16 +9,10 @@ import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
-import { Button } from '@mui/material';
 import CommentIcon from '@mui/icons-material/Comment';
-import BorderColorIcon from '@mui/icons-material/BorderColor';
-import CommentCard from './CommentCard.jsx';
-import { useDispatch,  } from 'react-redux';
-import {
-   setCommentRickMorty,
-} from '../../store/actions';
 import './CardItem.css';
-import { useState } from 'react';
+import Comments from './Comments';
+
 function CardItem({
    name,
    image,
@@ -28,24 +22,8 @@ function CardItem({
    onCheckLike,
    switchShowComments,
    isCommentsShow,
-   comments,
+   generatesRemoteCards
 }) {
-   const [commentInput, setCommentInput] = useState('');
-
-   const dispatch = useDispatch();
-
-   function getValueInput(e) {
-      setCommentInput(() => e.target.value);
-   }
-
-   function generatesComment(id) {
-      const date = new Date().toLocaleString();
-      let newComment = { id: id, date: date, comment: commentInput };
-      dispatch(setCommentRickMorty(newComment));
-      setCommentInput('');
-   }
-
-   const commentsThisCard = comments.filter((comment) => comment.id === id);
 
    return (
       <Card className="card" id={id} sx={{ width: 300 }}>
@@ -75,7 +53,7 @@ function CardItem({
                   {isCommentsShow ? null : (
                      <IconButton
                         aria-label="share"
-                        onClick={() => deleteCard(id)}
+                        onClick={() =>{deleteCard(id);generatesRemoteCards(id)}}
                      >
                         <DeleteIcon />
                      </IconButton>
@@ -85,40 +63,7 @@ function CardItem({
                   <CommentIcon />
                </IconButton>
             </div>
-
-            <div></div>
-            {isCommentsShow ? (
-               <>
-                  <div className="card-comment">
-                     <ul className="card-list">
-                        {commentsThisCard.map((comment) => {
-                           return (
-                              <li
-                                 className="card-list__item"
-                                 key={Math.random(comment.id)}
-                              >
-                                 <span>{comment.date}</span>
-                                 {comment.comment}
-                              </li>
-                           );
-                        })}
-                     </ul>
-                  </div>
-                  <form>
-                     <label>
-                        <BorderColorIcon />
-                        <input
-                           value={commentInput}
-                           type="text"
-                           onChange={getValueInput}
-                        />
-                     </label>
-                     <Button onClick={() => generatesComment(id)}>
-                        Оставить коментарий
-                     </Button>
-                  </form>
-               </>
-            ) : null}
+            {isCommentsShow ? <Comments id={id} /> : null}
          </div>
       </Card>
    );
