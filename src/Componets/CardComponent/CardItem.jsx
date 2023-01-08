@@ -12,6 +12,9 @@ import Favorite from '@mui/icons-material/Favorite';
 import CommentIcon from '@mui/icons-material/Comment';
 import './CardItem.css';
 import Comments from './Comments';
+import { useSelector } from 'react-redux';
+import { Navigate, Routes, Route } from 'react-router-dom';
+import RequireAuth from '../hoc/RequireAuth';
 
 function CardItem({
    name,
@@ -22,9 +25,8 @@ function CardItem({
    onCheckLike,
    switchShowComments,
    isCommentsShow,
-   generatesRemoteCards
+   generatesRemoteCards,
 }) {
-
    return (
       <Card className="card" id={id} sx={{ width: 300 }}>
          <div className="card-content">
@@ -53,7 +55,10 @@ function CardItem({
                   {isCommentsShow ? null : (
                      <IconButton
                         aria-label="share"
-                        onClick={() =>{deleteCard(id);generatesRemoteCards(id)}}
+                        onClick={() => {
+                           deleteCard(id);
+                           generatesRemoteCards(id);
+                        }}
                      >
                         <DeleteIcon />
                      </IconButton>
@@ -63,7 +68,7 @@ function CardItem({
                   <CommentIcon />
                </IconButton>
             </div>
-            {isCommentsShow ? <Comments id={id} /> : null}
+            {isCommentsShow ? <RequireAuth id={id}></RequireAuth> : null}
          </div>
       </Card>
    );

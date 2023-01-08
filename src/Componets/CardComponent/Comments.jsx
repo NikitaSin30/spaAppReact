@@ -8,16 +8,19 @@ export default function Comments({ id }) {
    const [commentInput, setCommentInput] = useState('');
    const dispatch = useDispatch();
    const comments = useSelector((state) => state.reducerRickMorty.comments);
-   
+
    function getValueInput(e) {
       setCommentInput(() => e.target.value);
    }
-   function generatesComment(id) {
+
+   function generatesComment(id,event) {
+    event.preventDefault()
       const date = new Date().toLocaleString();
       let newComment = { id: id, date: date, comment: commentInput };
       dispatch(setCommentRickMorty(newComment));
       setCommentInput((prev) => (prev = ''));
    }
+
    const commentsCurrentCard = comments.filter((comment) => comment.id === id);
 
    return (
@@ -43,7 +46,7 @@ export default function Comments({ id }) {
                   onChange={getValueInput}
                />
             </label>
-            <Button onClick={() => generatesComment(id)}>
+            <Button onClick={(event) => generatesComment(id,event)}>
                Оставить коментарий
             </Button>
          </form>

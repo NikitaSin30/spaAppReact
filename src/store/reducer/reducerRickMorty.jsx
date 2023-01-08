@@ -4,6 +4,7 @@ const initialState = {
    isError: false,
    isLoading: false,
    comments: [],
+   nameUser:''
 };
 
 export const reducerRickMorty = (state = initialState, action) => {
@@ -50,6 +51,12 @@ export const reducerRickMorty = (state = initialState, action) => {
             remoteHeroes: [...state.remoteHeroes].filter(
                (item) => item.id !== action.payload[0].id,
             ),
+         };
+         case 'SET_USER_NAME':
+            console.log(action.payload);
+         return {
+            ...state,
+            nameUser: action.payload,
          };
       default:
          return state;

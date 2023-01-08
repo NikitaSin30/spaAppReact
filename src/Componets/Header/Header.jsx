@@ -1,8 +1,6 @@
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
@@ -13,6 +11,8 @@ function Header() {
             <div className="appBar">
                <Link to="/remotedCards">Удаленные</Link>
                <Link to="/">Главная</Link>
+               <Link to="/login">LogIn</Link>
+
             </div>
          </AppBar>
       </Box>

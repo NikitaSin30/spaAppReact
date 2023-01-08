@@ -8,8 +8,7 @@ import Typography from '@mui/material/Typography';
 import RestorePageIcon from '@mui/icons-material/RestorePage';
 import '../CardItem.css';
 
-function RemoteCard({ id, name, image,rebuildCard }) {
-
+function RemoteCard({ id, name, image, rebuildCard }) {
    return (
       <Card className="card" id={id} sx={{ width: 300 }}>
          <div className="card-content">

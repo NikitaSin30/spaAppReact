@@ -1,20 +1,18 @@
-/* eslint-disable array-callback-return */
+
 import './App.css';
 import Main from './Componets/page/MainPage.jsx';
 import { Routes, Route } from 'react-router-dom';
-import Header from './Componets/Header/Header';
-import CardBlock from './Componets/CardComponent/CardBlock';
-import Filter from './Componets/Filter/Filter';
 import { useEffect, useState } from 'react';
 import { getHeroes } from './ConnectApi/getHeroes';
-import ErrorMessage from './Componets/ErrorMessage/ErrorMessage.jsx';
+import Layout from './Componets/layout/Layout.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import {
    setHeroesRickyMorty,
    setErrorStatus,
    setLoading,
 } from './store/actions/index.js';
-import RemotedCardPage from './Componets/page/RemotedCardPage';
+import RemotedCardPage from './Componets/page/RemotedCardPage.jsx';
+import LogIn from './Componets/logIn.jsx/LogIn.jsx';
 
 function App() {
    const [checkedFavorites, isCheckedFavorites] = useState(false);
@@ -42,23 +40,29 @@ function App() {
 
    return (
       <div className="App">
-         <Header></Header>
-         <Filter
-            checkedFavorites={checkedFavorites}
-            onChangeFavoriteFilter={onChangeFavoriteFilter}
-         ></Filter>
          <Routes>
             <Route
                path="/"
                element={
-                  <Main
+                  <Layout
                      checkedFavorites={checkedFavorites}
-                     isError={isError}
-                     isLoading={isLoading}
+                     onChangeFavoriteFilter={onChangeFavoriteFilter}
                   />
                }
-            />
-            <Route path="/remotedCards" element={<RemotedCardPage />} />
+            >
+               <Route
+                  index
+                  element={
+                     <Main
+                        checkedFavorites={checkedFavorites}
+                        isError={isError}
+                        isLoading={isLoading}
+                     />
+                  }
+               />
+               <Route path="/remotedCards" element={<RemotedCardPage/>} />
+               <Route path='/login' element={<LogIn/>}/>
+            </Route>
          </Routes>
       </div>
    );
