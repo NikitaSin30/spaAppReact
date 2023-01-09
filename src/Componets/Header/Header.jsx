@@ -1,5 +1,5 @@
 import React from 'react';
-import AppBar from '@mui/material/AppBar.jsx';
+import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';

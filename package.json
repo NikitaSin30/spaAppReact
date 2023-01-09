@@ -10,6 +10,7 @@
     "@mui/joy": "^5.0.0-alpha.60",
     "@mui/material": "^5.10.10",
     "@reduxjs/toolkit": "^1.8.6",
+    "eslint-plugin-jsx": "^0.1.0",
     "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
