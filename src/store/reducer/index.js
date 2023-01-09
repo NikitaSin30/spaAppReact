@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
-import { reducerRickMorty } from "./reducerRickMorty";
+import { combineReducers } from 'redux';
+import { reducerRickMorty } from './reducerRickMorty';
 
-export default combineReducers({reducerRickMorty})
+export default combineReducers({ reducerRickMorty });

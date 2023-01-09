@@ -11,67 +11,67 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import CommentIcon from '@mui/icons-material/Comment';
 import './CardItem.css';
-import Comments from './Comments';
-import { useSelector } from 'react-redux';
-import { Navigate, Routes, Route } from 'react-router-dom';
 import RequireAuth from '../hoc/RequireAuth';
 
 function CardItem({
-   name,
-   image,
-   deleteCard,
-   id,
-   likeCounter,
-   onCheckLike,
-   switchShowComments,
-   isCommentsShow,
-   generatesRemoteCards,
+  name,
+  image,
+  deleteCard,
+  id,
+  likeCounter,
+  onCheckLike,
+  switchShowComments,
+  isCommentsShow,
+  generatesRemoteCards,
+  comments,
 }) {
-   return (
-      <Card className="card" id={id} sx={{ width: 300 }}>
-         <div className="card-content">
+  return (
+    <Card className='card' id={id} sx={{ width: 300 }}>
+      <div className='card-content'>
+        {isCommentsShow ? null : (
+          <CardMedia
+            component='img'
+            height='194'
+            alt='Paella dish'
+            src={image}
+          />
+        )}
+        <CardContent>
+          <Typography variant='body2' color='text.secondary'>
+            {name}
+          </Typography>
+        </CardContent>
+        <div className='card-icons'>
+          <CardActions>
+            <Checkbox
+              className='like'
+              icon={<FavoriteBorder />}
+              checkedIcon={<Favorite />}
+              onClick={() => onCheckLike(id)}
+            />
+            <div className='counter'>{likeCounter} likes</div>
             {isCommentsShow ? null : (
-               <CardMedia
-                  component="img"
-                  height="194"
-                  alt="Paella dish"
-                  src={image}
-               />
+              <IconButton
+                aria-label='share'
+                onClick={() => {
+                  deleteCard(id);
+                  generatesRemoteCards(id);
+                }}
+              >
+                <DeleteIcon />
+              </IconButton>
             )}
-            <CardContent>
-               <Typography variant="body2" color="text.secondary">
-                  {name}
-               </Typography>
-            </CardContent>
-            <div className="card-icons">
-               <CardActions>
-                  <Checkbox
-                     className="like"
-                     icon={<FavoriteBorder />}
-                     checkedIcon={<Favorite />}
-                     onClick={() => onCheckLike(id)}
-                  />
-                  <div className="counter">{likeCounter} likes</div>
-                  {isCommentsShow ? null : (
-                     <IconButton
-                        aria-label="share"
-                        onClick={() => {
-                           deleteCard(id);
-                           generatesRemoteCards(id);
-                        }}
-                     >
-                        <DeleteIcon />
-                     </IconButton>
-                  )}
-               </CardActions>
-               <IconButton onClick={() => switchShowComments(id)}>
-                  <CommentIcon />
-               </IconButton>
-            </div>
-            {isCommentsShow ? <RequireAuth id={id}></RequireAuth> : null}
-         </div>
-      </Card>
-   );
+          </CardActions>
+          <IconButton onClick={() => switchShowComments(id)}>
+            <CommentIcon />
+          </IconButton>
+        </div>
+        {isCommentsShow ? (
+          <RequireAuth comments={comments} id={id}></RequireAuth>
+        ) : null}
+      </div>
+    </Card>
+  );
 }
 
 export default CardItem;

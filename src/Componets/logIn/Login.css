@@ -1,0 +1,12 @@
+.page-login {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-you-registered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
