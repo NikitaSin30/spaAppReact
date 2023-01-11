@@ -2,7 +2,7 @@
   "name": "react-redux",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nikitasin30.github.io/",
+  "homepage": "https://nikitasin30.github.io/NikitaSin30/rickMorty",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
@@ -43,5 +43,6 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "4.0.0"
   }
 }
