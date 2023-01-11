@@ -1,7 +1,7 @@
 import RemoteCardsBlock from '../CardComponent/remoteHeroes/RemoteCardBlock.jsx';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { MAIN } from '../layout/paths.js';
 import { Button } from '@mui/material';
 import './RemotedPage.css';
 
@@ -21,7 +21,7 @@ function RemotedCardPage() {
             Удалённых героев нет
           </h2>
           <Button variant='contained'>
-            <Link to='/'>На галвную</Link>
+            <Link to={MAIN}>На галвную</Link>
           </Button>
         </div>
       )}

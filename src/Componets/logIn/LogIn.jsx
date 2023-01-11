@@ -4,7 +4,9 @@ import { setUserName } from '../../store/actions';
 import { Button, FormGroup, Input } from '@mui/material';
 import { Link } from 'react-router-dom';
 import './Login.css';
-function LogIn(params) {
+import { MAIN } from '../layout/paths';
+
+function LogIn() {
   const dispatch = useDispatch();
   const nameUser = useSelector((state) => state.reducerRickMorty.nameUser);
   const [user, setUser] = useState('');
@@ -29,7 +31,7 @@ function LogIn(params) {
               Вы Зарагестрированы
             </h2>
             <Button variant='contained'>
-              <Link to='/'>На галвную</Link>
+              <Link to={MAIN}>На галвную</Link>
             </Button>
           </div>
         ) : (

@@ -12,6 +12,7 @@ import {
 } from './store/actions/index.js';
 import RemotedCardPage from './Componets/page/RemotedCardPage.jsx';
 import LogIn from './Componets/logIn/LogIn.jsx';
+import { MAIN,REMOTED_CARDS,LOGIN } from './Componets/layout/paths';
 
 function App() {
   const [checkedFavorites, isCheckedFavorites] = useState(false);
@@ -41,7 +42,7 @@ function App() {
     <>
       <Routes>
         <Route
-          path='/'
+          path={MAIN}
           element={
             <Layout
               checkedFavorites={checkedFavorites}
@@ -59,8 +60,8 @@ function App() {
               />
             }
           />
-          <Route path='/remotedCards' element={<RemotedCardPage />} />
-          <Route path='/login' element={<LogIn />} />
+          <Route path={REMOTED_CARDS} element={<RemotedCardPage />} />
+          <Route path={LOGIN} element={<LogIn />} />
         </Route>
       </Routes>
     </>
