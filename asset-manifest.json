@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/spaAppReact/static/css/main.55e2bbfc.css",
-    "main.js": "/spaAppReact/static/js/main.594c4f17.js",
-    "index.html": "/spaAppReact/index.html",
-    "main.55e2bbfc.css.map": "/spaAppReact/static/css/main.55e2bbfc.css.map",
-    "main.594c4f17.js.map": "/spaAppReact/static/js/main.594c4f17.js.map"
+    "main.css": "/NikitaSin30/rickMorty/static/css/main.131f1d85.css",
+    "main.js": "/NikitaSin30/rickMorty/static/js/main.aa6a13da.js",
+    "static/media/Тающие круги.gif": "/NikitaSin30/rickMorty/static/media/Тающие круги.0765155cae1aabade150.gif",
+    "index.html": "/NikitaSin30/rickMorty/index.html",
+    "main.131f1d85.css.map": "/NikitaSin30/rickMorty/static/css/main.131f1d85.css.map",
+    "main.aa6a13da.js.map": "/NikitaSin30/rickMorty/static/js/main.aa6a13da.js.map"
   },
   "entrypoints": [
-    "static/css/main.55e2bbfc.css",
-    "static/js/main.594c4f17.js"
+    "static/css/main.131f1d85.css",
+    "static/js/main.aa6a13da.js"
   ]
 }
